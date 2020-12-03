@@ -12,13 +12,15 @@ jobs:
       with:
         node-version: '12.x'
     - name: Fetch repository files
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
       with:
         ref: '${{ github.event.deployment.ref }}'
     - name: Install npm dependencies
       run: npm install
     - name: Create branch and commit
       run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git checkout -b production
         npm run build
         git add .
