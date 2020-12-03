@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 
 const CodeInput = ({ invalid = false, value, onChange }) => {
   return (
@@ -56,14 +56,14 @@ function App() {
   return (
     <div className="App">
       {types.map((type) => (
-      <div key={type.key}>
-        {type.key}: <CodeInput
+      <div key={type.key} className="text-container">
+        <label>{type.key}</label>
+        <CodeInput
           invalid={invalids.includes(type.key)}
           value={type.value}
           onChange={(value) => updateValue(type.key, value)} /> 
       </div>
       ))}
-      {string}
     </div>
   );
 }
