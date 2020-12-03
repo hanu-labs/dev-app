@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.scss';
 
 const CodeInput = ({ invalid = false, value, onChange }) => {
@@ -27,10 +27,6 @@ function App() {
     },
   ];
   
-  useEffect(() => {
-    updateValue('string', string);
-  }, []);
-
   const updateValue = (type, value) => {
     const filtered = invalids.filter((filter) => filter !== type);
     try {
