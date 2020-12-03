@@ -17,10 +17,15 @@ jobs:
         ref: '${{ github.event.deployment.ref }}'
     - name: Install npm dependencies
       run: npm install
-    - name: Deploy
+    - name: Create branch and commit
       run: |
         git checkout -b production
         npm run build
         git add .
         git commit -m "Deploy"
-        git push origin production --force
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: production
+        force: true
